@@ -1,9 +1,10 @@
 .banner {
   padding: 1rem;
-  border: 1px solid #c0392b;
+  border: 1px solid var(--color-error);
   border-radius: 8px;
-  background: #fdecea;
-  color: #7f1d1d;
+  background: var(--color-error-bg);
+  color: var(--color-error-text);
+  
 }
 
 .banner {
@@ -14,7 +15,7 @@
   padding: 0.5rem 1rem;
   border: 0;
   border-radius: 6px;
-  background: #c0392b;
-  color: #fff;
+  background: var(--color-error);
+  color: var(--color-bg);
   cursor: pointer;
 }

@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #fff;
+  background: var(--color-bg);
 }
 
 .banner {
@@ -19,10 +19,10 @@
 .banner-title {
   margin: 1.25rem 0 0.5rem;
   font-size: 2rem;
-  color: #111827;
+  color: var(--color-text);
 }
 
 .banner-text {
   margin: 0;
-  color: #6b7280;
+  color: var(--color-muted);
 }
