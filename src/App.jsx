@@ -1,18 +1,22 @@
+import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import HomePage from './pages/HomePage';
-import About from './pages/About';
-import Quote from './pages/Quote';
+
+const About = lazy(() => import('./pages/About'));
+const Quote = lazy(() => import('./pages/Quote'));
 
 export default function App() {
   return (
     <>
-    <NavBar />
-    <Routes>
-      <Route path='/' element={<HomePage />} />
-      <Route path='/about' element={<About />} />
-      <Route path='/quote' element={<Quote />} />
-    </Routes>
+      <NavBar />
+      <Suspense fallback={<p role="status">Loading...</p>}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/quote" element={<Quote />} />
+        </Routes>
+      </Suspense>
     </>
   );
 }
