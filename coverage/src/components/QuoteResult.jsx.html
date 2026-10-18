@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">42.85% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>3/7</span>
+                <span class='fraction'>7/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">17.64% </span>
+                <span class="strong">82.35% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/17</span>
+                <span class='fraction'>14/17</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>2/6</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -116,22 +116,22 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">58x</span>
+<span class="cline-any cline-yes">64x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -171,23 +171,23 @@ const money = new Intl.NumberFormat('en-US', {
   maximumFractionDigits: 0,
 });
 &nbsp;
-function <span class="fstat-no" title="function not covered" >estimatePremium(q</span>uote) {
-  const base = <span class="cstat-no" title="statement not covered" >{ auto: 900, health: 1200, home: 700, life: 600};</span>
-  const type = <span class="cstat-no" title="statement not covered" >String(quote.insuranceType ?? '').toLowerCase();</span>
-<span class="cstat-no" title="statement not covered" >  return (base[type] ?? 1000) + (String(quote.name ?? '').length + String(quote.email ?? '').length) * 7;</span>
+function estimatePremium(quote) {
+  const base = { auto: 900, health: 1200, home: 700, life: 600};
+  const type = String(quote.insuranceType ?? <span class="branch-1 cbranch-no" title="branch not covered" >'')</span>.toLowerCase();
+  return (base[type] ?? 1000) + (String(quote.name ?? <span class="branch-1 cbranch-no" title="branch not covered" >'')</span>.length + String(quote.email ?? <span class="branch-1 cbranch-no" title="branch not covered" >'')</span>.length) * 7;
 }
 &nbsp;
 export default function QuoteResult({ status, quote, error, onRetry }) {
-  <span class="missing-if-branch" title="else path not taken" >E</span>if (status === 'idle') return null;
+  if (status === 'idle') return null;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
+  return (
     &lt;section className={styles.wrapper} aria-live='polite'&gt;
       {status === 'pending' &amp;&amp; &lt;Spinner /&gt;}
 &nbsp;
-      {status === 'error' &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >&lt;ErrorBanner message={error} onRetry={onRetry} /&gt;}</span>
+      {status === 'error' &amp;&amp; &lt;ErrorBanner message={error} onRetry={onRetry} /&gt;}
 &nbsp;
-      {status === 'success' &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >quote &amp;&amp; (</span>
-<span class="branch-2 cbranch-no" title="branch not covered" >        &lt;article className={styles.card} aria-label='Your insurance quote'&gt;</span>
+      {status === 'success' &amp;&amp; quote &amp;&amp; (
+        &lt;article className={styles.card} aria-label='Your insurance quote'&gt;
           &lt;h3&gt;Quote for {quote.name}&lt;/h3&gt;
           &lt;p className={styles.amount}&gt;
             Your estimated premium: {money.format(estimatePremium(quote))}
@@ -217,7 +217,7 @@ export default function QuoteResult({ status, quote, error, onRetry }) {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-10-18T07:49:13.142Z
+                at 2026-10-18T07:59:03.278Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
